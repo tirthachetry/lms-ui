@@ -4,7 +4,7 @@ import axios from 'axios';
 // Get CSRF token from cookies
 // Get CSRF token from cookies
 const getCSRFToken = () => {
-    const name = "JSESSIONID";  // Default name for CSRF token set by Spring Security
+    const name = "XSRF-TOKEN";  // Default name for CSRF token set by Spring Security
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
 
