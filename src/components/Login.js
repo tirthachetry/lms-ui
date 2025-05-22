@@ -26,31 +26,26 @@ const handleLogin = async (e) => {
   params.append('password', password);
 
   try {
-    console.log('[Login] Fetching CSRF token from /csrf...');
-    const csrfRes = await axios.get('/csrf', {
-      withCredentials: true
-    });
-    console.log('[Login] CSRF token request status:', csrfRes.status);
-
-    const csrfToken = getCSRFToken();
-    console.log('[Login] Extracted CSRF token:', csrfToken);
-
-    if (!csrfToken) {
-      console.error('[Login] CSRF token not found in cookies');
-      throw new Error('CSRF token not found');
-    }
-
     console.log('[Login] Sending login request to /login...');
     const loginRes = await axios.post('/login', params, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'X-XSRF-TOKEN': csrfToken,
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
         withCredentials: true
       }
     );
 
     console.log('[Login] Login successful:', loginRes.status);
+
+    // Now request CSRF token via GET
+    const csrfRes = await axios.get('/api/labour/location/any', {
+        withCredentials: true
+    });
+    console.log('[Login] CSRF token request status:', csrfRes.status);
+
+    const csrfToken = getCSRFToken();
+    console.log('[Login] Extracted CSRF token:', csrfToken);
+
     onLoginSuccess(username);
     navigate('/');
 
