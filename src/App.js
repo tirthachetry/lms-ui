@@ -23,13 +23,13 @@ const getCSRFToken = () => {
 
 function Home({ loggedInUser, setLoggedInUser }) {
   const navigate = useNavigate();
-  await axiosInstance.get('/api/labour/location/any', {
-    withCredentials: true
-  });
-  const csrfToken = getCSRFToken();
 
   const handleLogout = async () => {
     try {
+      await axiosInstance.get('/api/labour/location/any', {
+        withCredentials: true
+      });
+      const csrfToken = getCSRFToken();
       await axiosInstance.post('/logout', {}, { withCredentials: true });
     } catch (err) {
       console.error("Logout failed", err);
