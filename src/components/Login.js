@@ -25,7 +25,9 @@ const Login = ({ onLoginSuccess }) => {
     params.append('password', password);
 
     try {
-      await axios.get('/');
+      await axios.get('/api/labour/location/any', {
+        withCredentials: true
+      });
       const csrfToken = getCSRFToken();
       await axios.post('/login', params, {
         headers: {
