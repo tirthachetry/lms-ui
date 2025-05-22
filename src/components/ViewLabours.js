@@ -20,7 +20,7 @@ const ViewLabours = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get(`http://localhost:8080/api/labour/location/${location}`);
+      const res = await axios.get(`https://labour-management-system.onrender.com/api/labour/location/${location}`);
       setLabours(res.data);
     } catch (err) {
       console.error(err);

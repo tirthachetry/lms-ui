@@ -11,7 +11,7 @@ const getCSRFToken = () => {
 
 // Create an Axios instance to centralize request handling
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:8080",  // Your Spring Boot API base URL
+    baseURL: "https://labour-management-system.onrender.com",  // Your Spring Boot API base URL
     withCredentials: true,  // Include cookies with requests (important for CSRF tokens)
 });
 
