@@ -29,7 +29,9 @@ const AddLabour = () => {
     }
 
     try {
-      const res = await axiosInstance.post('/api/labour/add', labour);  // Use axiosInstance for POST request
+      const res = await axiosInstance.post('/api/labour/add', labour, {
+        withCredentials: true
+      });  // Use axiosInstance for POST request
       setSuccessMessage(res.data);  // Success message from backend
       setError('');
       setLabour({ name: '', phone: '', skill: '', location: '', hourlyRate: '' });
