@@ -10,6 +10,13 @@ const Login = ({ onLoginSuccess }) => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const getCSRFToken = () => {
+    const name = 'XSRF-TOKEN';
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  };
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -18,10 +25,7 @@ const Login = ({ onLoginSuccess }) => {
     params.append('password', password);
 
     try {
-      // Fetch token first
-      await axios.get("/");
-
-      // Then login
+      await axios.get('/');
       const csrfToken = getCSRFToken();
       await axios.post('/login', params, {
         headers: {
