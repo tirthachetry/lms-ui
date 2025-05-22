@@ -20,7 +20,9 @@ const ViewLabours = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get(`/api/labour/location/${location}`);
+      const res = await axios.get(`/api/labour/location/${location}`, {
+         withCredentials: true
+      });
       setLabours(res.data);
     } catch (err) {
       console.error(err);
@@ -42,7 +44,9 @@ const ViewLabours = () => {
 
   const saveEdit = async () => {
     try {
-      await axios.put(`/api/labour/${editingId}`, editData);
+      await axios.put(`/api/labour/${editingId}`, editData {
+         withCredentials: true
+      });
       setLabours((prev) =>
         prev.map((labour) => (labour.id === editingId ? { ...editData } : labour))
       );

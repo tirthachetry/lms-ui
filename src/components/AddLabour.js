@@ -30,7 +30,7 @@ const AddLabour = () => {
 
     try {
       const res = await axiosInstance.post('/api/labour/add', labour, {
-        timeout: 5000 // 5 seconds timeout
+          withCredentials: true
       });
       setSuccessMessage(res.data);  // Success message from backend
       setError('');
