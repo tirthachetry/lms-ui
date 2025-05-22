@@ -10,12 +10,6 @@ const Login = ({ onLoginSuccess }) => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const getCSRFToken = () => {
-    const name = 'XSRF-TOKEN';
-    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  };
-
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,14 +19,9 @@ const Login = ({ onLoginSuccess }) => {
     params.append('password', password);
 
     try {
-      await axios.get('/api/labour/location/any', {
-        withCredentials: true
-      });
-      const csrfToken = getCSRFToken();
       await axios.post('/login', params, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'X-XSRF-TOKEN': csrfToken
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
         withCredentials: true
       });
