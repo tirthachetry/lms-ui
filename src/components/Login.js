@@ -1,9 +1,8 @@
 // src/components/Login.js
 import React, { useState } from 'react';
-//import axios from '../utils/axiosInstance';
+import axios from '../utils/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import axios from 'axios';
 
 const Login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
@@ -19,7 +18,7 @@ const Login = ({ onLoginSuccess }) => {
     params.append('password', password);
 
     try {
-      await axios.post('https://labour-management-system.onrender.com/login', params, {
+      await axios.post('/login', params, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },

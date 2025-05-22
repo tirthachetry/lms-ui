@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from '../utils/axiosInstance';  // Import the axiosInstance
 import './AddLabour.css';
-import axios from 'axios';
 
 const AddLabour = () => {
   const [labour, setLabour] = useState({
@@ -30,7 +29,7 @@ const AddLabour = () => {
     }
 
     try {
-      const res = await axios.post('https://labour-management-system.onrender.com/api/labour/add', labour, {
+      const res = await axiosInstance.post('/api/labour/add', labour, {
         withCredentials: true
       });  // Use axiosInstance for POST request
       setSuccessMessage(res.data);  // Success message from backend
