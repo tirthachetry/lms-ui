@@ -30,7 +30,7 @@ const AddLabour = () => {
 
     try {
       const token = localStorage.getItem('jwt');
-      await axiosInstance.post('/api/labour/add', labour, {
+      const res = await axiosInstance.post('/api/labour/add', labour, {
         headers: {
           Authorization: `Bearer ${token}`
         }
