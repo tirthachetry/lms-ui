@@ -29,21 +29,13 @@ const AddLabour = () => {
     }
 
     try {
-      const res = await axiosInstance.post('/api/labour/add', labour, {
-          withCredentials: true
-      });
+      const res = await axiosInstance.post('/api/labour/add', labour);  // Use axiosInstance for POST request
       setSuccessMessage(res.data);  // Success message from backend
       setError('');
       setLabour({ name: '', phone: '', skill: '', location: '', hourlyRate: '' });
     } catch (error) {
       console.error(error);
-
-      if (error.code === 'ECONNABORTED') {
-        setError('Request timed out. Please try again.');
-      } else {
-        setError('Failed to add labour.');
-      }
-
+      setError('Failed to add labour.');
       setSuccessMessage('');
     }
   };
