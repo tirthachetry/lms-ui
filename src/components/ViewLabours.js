@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import axios from '../utils/axiosInstance';
+//import axios from '../utils/axiosInstance';
 import './ViewLabours.css';
+import axios from 'axios';
 
 const ViewLabours = () => {
   const [location, setLocation] = useState('');
@@ -20,7 +21,7 @@ const ViewLabours = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get(`/api/labour/location/${location}` ,{
+      const res = await axios.get(`https://labour-management-system.onrender.com/api/labour/location/${location}` ,{
         withCredentials: true
       });
       setLabours(res.data);
@@ -44,7 +45,7 @@ const ViewLabours = () => {
 
   const saveEdit = async () => {
     try {
-      await axios.put(`/api/labour/${editingId}`, editData);
+      await axios.put(`https://labour-management-system.onrender.com/api/labour/${editingId}`, editData);
       setLabours((prev) =>
         prev.map((labour) => (labour.id === editingId ? { ...editData } : labour))
       );
