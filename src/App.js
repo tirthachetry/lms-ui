@@ -11,7 +11,12 @@ function Home({ loggedInUser, setLoggedInUser }) {
 
   const handleLogout = async () => {
     try {
-      await axiosInstance.post('/logout', {}, { withCredentials: true });
+      const token = localStorage.getItem('jwt');
+      await axiosInstance.post('/logout', {}, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+      });
     } catch (err) {
       console.error("Logout failed", err);
     }

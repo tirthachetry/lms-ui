@@ -29,8 +29,11 @@ const AddLabour = () => {
     }
 
     try {
-      const res = await axiosInstance.post('/api/labour/add', labour, {
-        withCredentials: true
+      const token = localStorage.getItem('jwt');
+      await axiosInstance.post('/api/labour/add', labour, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });  // Use axiosInstance for POST request
       setSuccessMessage(res.data);  // Success message from backend
       setError('');

@@ -4,12 +4,6 @@ import axios from '../utils/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const getCSRFToken = () => {
-  const name = 'XSRF-TOKEN';
-  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-  return match ? match[2] : null;
-};
-
 const Login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -27,24 +21,13 @@ const handleLogin = async (e) => {
 
   try {
     console.log('[Login] Sending login request to /login...');
-    const loginRes = await axios.post('/login', params, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        withCredentials: true
-      }
-    );
+    const loginRes = await axios.post('/login', {
+      username: 'admin',
+      password: 'password'
+    });
+    localStorage.setItem('jwt', loginRes.data.token);
 
     console.log('[Login] Login successful:', loginRes.status);
-
-    // Now request CSRF token via GET
-    const csrfRes = await axios.get('/api/labour/location/any', {
-        withCredentials: true
-    });
-    console.log('[Login] CSRF token request status:', csrfRes.status);
-
-    const csrfToken = getCSRFToken();
-    console.log('[Login] Extracted CSRF token:', csrfToken);
 
     onLoginSuccess(username);
     navigate('/');

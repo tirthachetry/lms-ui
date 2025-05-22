@@ -20,9 +20,12 @@ const ViewLabours = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get(`/api/labour/location/${location}` ,{
-        withCredentials: true
-      });
+      const token = localStorage.getItem('jwt');
+      const res = await axios.get(`/api/labour/location/${location}` , {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+     });
       setLabours(res.data);
     } catch (err) {
       console.error(err);
@@ -44,8 +47,11 @@ const ViewLabours = () => {
 
   const saveEdit = async () => {
     try {
-      await axios.put(`/api/labour/${editingId}`, editData ,{
-         withCredentials: true
+      const token = localStorage.getItem('jwt');
+      await axios.put(`/api/labour/${editingId}`, editData , {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });
       setLabours((prev) =>
         prev.map((labour) => (labour.id === editingId ? { ...editData } : labour))
