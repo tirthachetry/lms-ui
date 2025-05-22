@@ -20,7 +20,9 @@ const ViewLabours = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get(`/api/labour/location/${location}`);
+      const res = await axios.get(`/api/labour/location/${location}` ,{
+        withCredentials: true
+      });
       setLabours(res.data);
     } catch (err) {
       console.error(err);
