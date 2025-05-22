@@ -1,0 +1,102 @@
+/* Container */
+.container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  
+  /* Form */
+  input {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 10px 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #5c6bc0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  button:hover {
+    background-color: #3f51b5;
+  }
+  
+  /* Labour cards layout */
+  .labour-list {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Labour card */
+  .labour-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  .labour-card h3 {
+    margin-bottom: 8px;
+    color: #5c6bc0;
+  }
+  
+  .labour-card p {
+    margin: 4px 0;
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  /* Spinner */
+  .spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #5c6bc0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 30px auto;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive tweaks */
+  @media screen and (max-width: 600px) {
+    .container {
+      padding: 15px;
+    }
+  
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  
+    .labour-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  

@@ -1,0 +1,29 @@
+.login-page {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .login-page input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .login-page button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .login-page .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
