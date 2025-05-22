@@ -44,7 +44,7 @@ const ViewLabours = () => {
 
   const saveEdit = async () => {
     try {
-      await axios.put(`/api/labour/${editingId}`, editData {
+      await axios.put(`/api/labour/${editingId}`, editData ,{
          withCredentials: true
       });
       setLabours((prev) =>
