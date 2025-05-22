@@ -20,7 +20,6 @@ const handleLogin = async (e) => {
   params.append('password', password);
 
   try {
-    console.log('[Login] Sending login request to /login...');
     const loginRes = await axios.post('/login', {
       username: 'admin',
       password: 'password'
@@ -34,7 +33,6 @@ const handleLogin = async (e) => {
 
   } catch (err) {
     console.error('[Login] Login failed:', err);
-    setError("Login failed. Check credentials or CSRF setup.");
   }
 };
 
