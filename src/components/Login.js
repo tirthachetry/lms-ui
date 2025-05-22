@@ -18,9 +18,15 @@ const Login = ({ onLoginSuccess }) => {
     params.append('password', password);
 
     try {
+      // Fetch token first
+      await axiosInstance.get("/");
+
+      // Then login
+      const csrfToken = getCSRFToken();
       await axios.post('/login', params, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'X-XSRF-TOKEN': csrfToken
         },
         withCredentials: true
       });
