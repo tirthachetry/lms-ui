@@ -19,7 +19,7 @@ const Login = ({ onLoginSuccess }) => {
 
     try {
       // Fetch token first
-      await axiosInstance.get("/");
+      await axios.get("/");
 
       // Then login
       const csrfToken = getCSRFToken();
